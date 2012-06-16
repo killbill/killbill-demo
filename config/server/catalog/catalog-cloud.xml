@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="CatalogSchema.xsd ">
+
+	<effectiveDate>2011-01-01T00:00:00+00:00</effectiveDate>
+	<catalogName>Cloud Instances</catalogName>
+	<currencies>
+		<currency>USD</currency>
+		<currency>EUR</currency>
+	</currencies>
+	<products>
+		<product name="SmallInstance">
+			<category>BASE</category>
+		</product>
+		<product name="LargeInstance">
+			<category>BASE</category>
+            <available>
+                <addonProduct>Extra-Storage</addonProduct>
+                <addonProduct>Extra-GPU</addonProduct>
+            </available>
+		</product>
+		<product name="Extra-Storage">
+			<category>ADD_ON</category>
+		</product>
+		<product name="Extra-GPU">
+			<category>ADD_ON</category>
+		</product>
+	</products>
+	<rules>
+		<changePolicy>
+			<changePolicyCase> 
+				<phaseType>TRIAL</phaseType>
+				<policy>IMMEDIATE</policy>
+			</changePolicyCase>
+			<changePolicyCase> 
+				<fromBillingPeriod>MONTHLY</fromBillingPeriod>
+				<toBillingPeriod>ANNUAL</toBillingPeriod>
+				<policy>IMMEDIATE</policy>
+			</changePolicyCase>
+			<changePolicyCase> 
+				<fromBillingPeriod>ANNUAL</fromBillingPeriod>
+				<toBillingPeriod>MONTHLY</toBillingPeriod>
+				<policy>END_OF_TERM</policy>
+			</changePolicyCase>
+			<changePolicyCase> 
+				<policy>END_OF_TERM</policy>
+			</changePolicyCase>
+		</changePolicy>
+		<changeAlignment>
+            <changeAlignmentCase>
+                <alignment>START_OF_SUBSCRIPTION</alignment>
+            </changeAlignmentCase>
+		</changeAlignment>
+		<cancelPolicy>
+			<cancelPolicyCase>
+				<phaseType>TRIAL</phaseType>
+				<policy>IMMEDIATE</policy>
+			</cancelPolicyCase>
+            <cancelPolicyCase>
+                <policy>END_OF_TERM</policy>
+            </cancelPolicyCase>
+		</cancelPolicy>
+		<createAlignment>
+            <createAlignmentCase>
+                <alignment>START_OF_BUNDLE</alignment>
+            </createAlignmentCase>
+		</createAlignment>
+		<billingAlignment>
+			<billingAlignmentCase>
+				<productCategory>ADD_ON</productCategory>
+				<alignment>BUNDLE</alignment>
+			</billingAlignmentCase>
+			<billingAlignmentCase>
+				<billingPeriod>ANNUAL</billingPeriod>
+				<alignment>SUBSCRIPTION</alignment>
+			</billingAlignmentCase>
+			<billingAlignmentCase>
+				<alignment>ACCOUNT</alignment>
+			</billingAlignmentCase>
+		</billingAlignment>
+		<priceList>
+		</priceList>
+	</rules>
+	<plans>
+		<plan name="small-instance-monthly">
+			<product>SmallInstance</product>
+			<initialPhases>
+				<phase type="DISCOUNT">
+					<duration>
+						<unit>MONTHS</unit>
+						<number>3</number>
+					</duration>
+					<billingPeriod>MONTHLY</billingPeriod>
+    				<recurringPrice>
+    					<price><currency>EUR</currency><value>4.95</value></price> 
+    					<price><currency>USD</currency><value>4.95</value></price>								
+    				</recurringPrice>
+				</phase>
+			</initialPhases>
+			<finalPhase type="EVERGREEN">
+				<duration>
+					<unit>UNLIMITED</unit>
+				</duration>
+				<billingPeriod>MONTHLY</billingPeriod>
+				<recurringPrice>
+					<price><currency>EUR</currency><value>9.95</value></price> 
+					<price><currency>USD</currency><value>9.95</value></price>								
+				</recurringPrice>
+			</finalPhase>
+		</plan>
+		<plan name="large-instance-monthly">
+			<product>LargeInstance</product>
+			<initialPhases>
+				<phase type="DISCOUNT">
+					<duration>
+						<unit>MONTHS</unit>
+						<number>3</number>
+					</duration>
+					<billingPeriod>MONTHLY</billingPeriod>
+    				<recurringPrice>
+    					<price><currency>EUR</currency><value>19.95</value></price> 
+    					<price><currency>USD</currency><value>19.95</value></price>								
+    				</recurringPrice>
+				</phase>
+			</initialPhases>
+			<finalPhase type="EVERGREEN">
+				<duration>
+					<unit>UNLIMITED</unit>
+				</duration>
+				<billingPeriod>MONTHLY</billingPeriod>
+				<recurringPrice>
+					<price><currency>EUR</currency><value>29.95</value></price> 
+					<price><currency>USD</currency><value>29.95</value></price>								
+				</recurringPrice>
+			</finalPhase>
+		</plan>
+		<plan name="small-instance-annual">
+			<product>SmallInstance</product>
+			<initialPhases>
+				<phase type="DISCOUNT">
+					<duration>
+						<unit>MONTHS</unit>
+						<number>3</number>
+					</duration>
+					<billingPeriod>MONTHLY</billingPeriod>
+    				<recurringPrice>
+    					<price><currency>EUR</currency><value>4.95</value></price> 
+    					<price><currency>USD</currency><value>4.95</value></price>								
+    				</recurringPrice>
+				</phase>
+			</initialPhases>
+			<finalPhase type="EVERGREEN">
+				<duration>
+					<unit>UNLIMITED</unit>
+				</duration>
+				<billingPeriod>ANNUAL</billingPeriod>
+				<recurringPrice>
+					<price><currency>EUR</currency><value>99.95</value></price> 
+					<price><currency>USD</currency><value>99.95</value></price>								
+				</recurringPrice>
+			</finalPhase>
+		</plan>
+		<plan name="large-instance-annual">
+			<product>LargeInstance</product>
+			<initialPhases>
+				<phase type="DISCOUNT">
+					<duration>
+						<unit>MONTHS</unit>
+						<number>3</number>
+					</duration>
+					<billingPeriod>MONTHLY</billingPeriod>
+    				<recurringPrice>
+    					<price><currency>EUR</currency><value>19.95</value></price> 
+    					<price><currency>USD</currency><value>19.95</value></price>								
+    				</recurringPrice>
+				</phase>
+			</initialPhases>
+			<finalPhase type="EVERGREEN">
+				<duration>
+					<unit>UNLIMITED</unit>
+				</duration>
+				<billingPeriod>ANNUAL</billingPeriod>
+				<recurringPrice>
+					<price><currency>EUR</currency><value>259.95</value></price> 
+					<price><currency>USD</currency><value>259.95</value></price>								
+				</recurringPrice>
+			</finalPhase>
+		</plan>
+		<plan name="extra-storage-monthly">
+		<product>Extra-Storage</product>
+			<finalPhase type="EVERGREEN">
+				<duration>
+					<unit>UNLIMITED</unit>
+				</duration>
+				<billingPeriod>MONTHLY</billingPeriod>
+				<recurringPrice>
+					<price><currency>USD</currency><value>3.95</value></price>								
+					<price><currency>EUR</currency><value>3.95</value></price>
+				</recurringPrice>
+			</finalPhase>
+		</plan>
+		<plan name="extra-gpu-monthly">
+		<product>Extra-GPU</product>
+			<finalPhase type="EVERGREEN">
+				<duration>
+					<unit>UNLIMITED</unit>
+				</duration>
+				<billingPeriod>MONTHLY</billingPeriod>
+				<recurringPrice>
+					<price><currency>USD</currency><value>4.95</value></price>								
+					<price><currency>EUR</currency><value>4.95</value></price>
+				</recurringPrice>
+			</finalPhase>
+		</plan>
+	</plans>
+	<priceLists>
+		<defaultPriceList name="DEFAULT"> 
+			<plans>
+				<plan>small-instance-monthly</plan>
+				<plan>large-instance-monthly</plan>
+				<plan>small-instance-annual</plan>
+				<plan>large-instance-annual</plan>
+				<plan>extra-gpu-monthly</plan>
+				<plan>extra-storage-monthly</plan>
+			</plans>
+		</defaultPriceList>
+	</priceLists>
+</catalog>
