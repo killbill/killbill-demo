@@ -60,8 +60,8 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
                     echo '
             <tr>
                 <td>' . $product->name . '
-                    <input id="product_' . $i . '" name="product_' . $i . '" type="hidden" value=' . $product->name . '>
-                    <input id="category_' . $i . '" name="category_' . $i . '" type="hidden" value=' . $product->type . '>
+                    <input id="product_' . $i . '" name="product_' . $i . '" type="hidden" value="' . $product->name . '">
+                    <input id="category_' . $i . '" name="category_' . $i . '" type="hidden" value="' . $product->type . '">
                 </td>
                 <td>' . $plan->name . '</td>
                 <td>' . $description . '</td>
@@ -69,13 +69,14 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
             </tr>';
                 }
             }
-            ?>
+            echo'
             <tr>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td><input id="nb_plans" name="nb_plans" type="hidden" value="' . $i . '"></td>
                 <td><input type="submit" class="btn btn-primary" value="Purchase"></td>
-            </tr>
+            </tr>';
+            ?>
             </tbody>
         </table>
     </form>

@@ -25,38 +25,43 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
 ?>
 
 <div class="container">
+<?php
+$account = loadAccount();
+$bundles = $account->getBundles();
+?>
+
+    <p>You currenty have <?php echo count($bundles); ?> instances</p>
     <table class="table table-condensed">
         <thead>
         <tr>
-            <th>Instance name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th></th>
+            <th>Instance identifier</th>
+            <th>Product name</th>
+            <th>Subscription start date</th>
+            <th>Charted through date</th>
         </tr>
         </thead>
         <tbody>
         <?php
-        $account = new Killbill_Account();
-        $account->accountId = $_SESSION['accountId'];
-        $account = $account->get();
-        $bundles = $account->getBundles();
-//        foreach ($catalog->getPlans() as $name => $plan) {
-        foreach (array('mini', 'plus', 'pro') as $name => $plan) {
-            echo '
+        if ($bundles != null) {
+            foreach ($bundles as $bundle) {
+                $j = 0;
+                $subscriptions = $bundle->getSubscriptions();
+                if ($subscriptions == null) {
+                    continue;
+                }
+
+                foreach ($subscriptions as $subscription) {
+                    echo '
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="text" class="input-mini" id="input1" value="0"></td>
+                <td>' . $bundle->externalKey . '</td>
+                <td>' . $subscription->productName . '</td>
+                <td>' . $subscription->startDate . '</td>
+                <td>' . $subscription->chargedThroughDate . '</td>
             </tr>';
+                }
+            }
         }
         ?>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><input type="submit" class="btn btn-primary" value="Purchase"></td>
-        </tr>
         </tbody>
     </table>
 </div>
