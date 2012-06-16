@@ -76,52 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $account = $account->get();
     }
 }
+
+include_once(dirname(__FILE__) . '/includes/header.php');
+include_once(dirname(__FILE__) . '/includes/nav.php');
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Killbilling, Open-Source subscription system</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="killbilling demo">
-    <meta name="author" content="">
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        }
-    </style>
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="#">Killbilling</a>
-
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li class="active"><a href="account.php">Account</a></li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </div>
-</div>
 
 <div class="container">
 <?php
@@ -274,7 +232,6 @@ if ($account_created === FALSE) {
 </div>
 <!-- /container -->
 
-<script src="js/bootstrap.min.js"></script>
-
-</body>
-</html>
+<?php
+include_once(dirname(__FILE__) . '/includes/footer.php');
+?>
