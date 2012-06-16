@@ -25,30 +25,49 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
 ?>
 
 <div class="container">
-    <form class="form-horizontal" method="post" action="account.php">
+    <form class="form-horizontal" method="post" action="purchase.php">
         <table class="table table-condensed">
             <thead>
             <tr>
-                <th>Instance name</th>
+                <th>Instance type</th>
+                <th>Plan</th>
                 <th>Description</th>
-                <th>Price</th>
-                <th></th>
+                <th>Quantity</th>
             </tr>
             </thead>
             <tbody>
             <?php
-                        $catalog = new Killbill_Catalog();
-            $catalog->initialize();
+            $account = loadAccount();
+            $currency = $account->currency;
+            $catalog = loadCatalog();
 
-//        foreach ($catalog->getPlans() as $name => $plan) {
-            foreach (array('mini', 'plus', 'pro') as $name => $plan) {
-                echo '
+            $i = 0;
+            foreach ($catalog->getBaseProducts() as $product) {
+                $j = 0;
+                foreach ($product->plans as $plan) {
+                    $i += 1;
+
+                    $description = '';
+                    $j = 0;
+                    foreach ($plan->phases as $phase) {
+                        if ($j > 0) {
+                            $description .= ' then ';
+                        }
+                        $description .= $phase->type . ' phase at <strong>' . $phase->prices->$currency . ' ' . $currency . '</strong>';
+                        $j++;
+                    }
+
+                    echo '
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><input type="text" class="input-mini" id="input1" value="0"></td>
+                <td>' . $product->name . '
+                    <input id="product_' . $i . '" name="product_' . $i . '" type="hidden" value=' . $product->name . '>
+                    <input id="category_' . $i . '" name="category_' . $i . '" type="hidden" value=' . $product->type . '>
+                </td>
+                <td>' . $plan->name . '</td>
+                <td>' . $description . '</td>
+                <td><input id="quantity_' . $i . '" name="quantity_' . $i . '" type="text" class="input-mini" value="0"></td>
             </tr>';
+                }
             }
             ?>
             <tr>

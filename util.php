@@ -28,4 +28,26 @@ function ensureLoggedIn() {
     }
 }
 
+/**
+ * Load the user account
+ *
+ * @return account object
+ */
+function loadAccount() {
+    $account = new Killbill_Account();
+    $account->accountId = $_SESSION['accountId'];
+    return $account->get();
+}
+
+/**
+ * Load the catalog
+ *
+ * @return catalog object
+ */
+function loadCatalog() {
+    $catalog = new Killbill_Catalog();
+    $catalog->initialize();
+    return $catalog;
+}
+
 ?>

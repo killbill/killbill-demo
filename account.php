@@ -115,7 +115,17 @@ if ($account_created === FALSE) {
 ?>
     <form class="form-horizontal" method="post" action="account.php">
         <fieldset>
-            <legend>Create your account in Killbill</legend>
+            <legend>Your account in Killbill</legend>
+        <?php if (isset($_SESSION['accountId'])) { ?>
+            <div class="control-group">
+                <label class="control-label">Account id</label>
+
+                <div class="controls">
+                    <span class="input-xlarge uneditable-input"><?php echo $account->accountId; ?></span>
+                </div>
+            </div>
+        <?php } ?>
+
             <div class="control-group">
                 <label class="control-label" for="name">Name</label>
 
