@@ -23,7 +23,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="#">Killbilling</a>
+            <a class="brand" href="index.php">CloudKilling</a>
 
             <div class="nav-collapse">
                 <ul class="nav">

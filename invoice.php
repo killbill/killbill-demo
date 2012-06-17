@@ -15,7 +15,7 @@
  * under the License.
  */
 
-if ($_GET['id'] == NULL) {
+if ($_GET['id'] == null) {
     header('Location: /invoices.php');
 }
 
@@ -37,7 +37,11 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
     $invoice->invoiceId = $_GET['id'];
     $invoice = $invoice->get();
 
-    echo $invoice->getInvoiceAsHTML();
+    if ($invoice == null) {
+        echo 'Invoice does not exist.';
+    } else {
+        echo $invoice->getInvoiceAsHTML();
+    }
     ?>
     </div>
 </div>
