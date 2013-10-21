@@ -35,7 +35,7 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
 
     $invoice = new Killbill_Invoice();
     $invoice->invoiceId = $_GET['id'];
-    $invoice = $invoice->get();
+    $invoice = $invoice->get(null);
 
     if ($invoice == null) {
         echo 'Invoice does not exist.';

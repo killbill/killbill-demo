@@ -28,8 +28,7 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
 <?php
 $account = loadAccount();
 
-$invoices = new Killbill_Invoice();
-$invoices = $invoices->getForAccount($account->accountId);
+$invoices = $account->getInvoices(false, null, null);
 
 ?>
     <table class="table table-condensed">

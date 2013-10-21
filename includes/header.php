@@ -22,7 +22,7 @@
     <meta charset="utf-8">
     <title>Killbilling, Open-Source subscription system</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="killbilling demo">
+    <meta name="description" content="spy car demo">
     <meta name="author" content="">
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">

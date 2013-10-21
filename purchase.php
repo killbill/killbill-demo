@@ -20,9 +20,11 @@ require_once(dirname(__FILE__) . '/util.php');
 
 ensureLoggedIn();
 
+date_default_timezone_set('UTC');
+
 function iso8601($time = false) {
     if (!$time) $time = time();
-    return date("Y-m-d", $time) . 'T' . date("H:i:s", $time) . '+00:00';
+    return date("Y-m-d", $time);
 }
 
 $account = new Killbill_Account();
@@ -38,15 +40,10 @@ for ($i = 1; $i <= $_POST['nb_plans']; $i++) {
     for ($j = 1; $j <= $quantity; $j++) {
         $externalBundleId = uniqid();
 
-        // Create a new bundle for this plan
-        $bundleData = new Killbill_Bundle();
-        $bundleData->accountId = $account->accountId;
-        $bundleData->externalKey = $externalBundleId;
-        $bundle = $bundleData->create("pierre", "PHP_TEST", "Test for " . $externalBundleId);
-
         // Associate a subscription
         $subscriptionData = new Killbill_Subscription();
-        $subscriptionData->bundleId = $bundle->bundleId;
+        $subscriptionData->accountId =  $account->accountId;
+        $subscriptionData->externalKey = $externalBundleId;
         $subscriptionData->startDate = iso8601();
         $subscriptionData->productName = $_POST['product_' . $i];
         $subscriptionData->productCategory = $_POST['category_' . $i];

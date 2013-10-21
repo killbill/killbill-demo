@@ -45,7 +45,7 @@ $bundles = $account->getBundles();
         if ($bundles != null) {
             foreach ($bundles as $bundle) {
                 $j = 0;
-                $subscriptions = $bundle->getSubscriptions();
+                $subscriptions = $bundle->subscriptions;
                 if ($subscriptions == null) {
                     continue;
                 }

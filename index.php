@@ -21,10 +21,9 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
 ?>
 <div class="container">
     <div class="hero-unit">
-        <h1>Welcome to CloudKilling!</h1>
+        <h1>Welcome to Spy Car Shop!</h1>
 
-        <p>CloudKilling is an awesome imaginary cloud provider that uses <a href="https://github.com/killbilling" target="_blank">Killbill</a>
-            for its subscription needs.</p>
+        <p>Spy Car Shop is an demo for  <a href="https://github.com/killbill" target="_blank">Kill Bill</a></p>
 
         <p><a class="btn btn-primary btn-large" href="account.php">Create an account today &raquo;</a></p>
     </div>

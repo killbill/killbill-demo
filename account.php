@@ -30,12 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $accountData->paymentMethodId = null;
     $accountData->address1 = $_POST['address1'];
     $accountData->address2 = $_POST['address2'];
-    $accountData->company = $_POST['company'];
     $accountData->state = $_POST['state'];
     $accountData->country = $_POST['country'];
     $accountData->phone = $_POST['phone'];
     $accountData->length = strlen($accountData->name);
-    $accountData->billCycleDay = $_POST['billCycleDay'];
     $accountData->timeZone = $_POST['timeZone'];
 
     if (!isset($_SESSION['accountId'])) {
@@ -208,16 +206,6 @@ if ($account_created === FALSE) {
                            value="<?php echo $account->phone; ?>">
 
                     <p class="help-block">Your primary phone number, e.g. 555-122-3491</p>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="billCycleDay">Bill cycle day</label>
-
-                <div class="controls">
-                    <input type="text" class="input-xlarge" id="billCycleDay" name="billCycleDay"
-                           value="<?php echo $account->billCycleDay; ?>">
-
-                    <p class="help-block">The day of the month you want to be billed, e.g. 15 for the 15th</p>
                 </div>
             </div>
             <div class="control-group">

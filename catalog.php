@@ -24,6 +24,24 @@ include_once(dirname(__FILE__) . '/includes/header.php');
 include_once(dirname(__FILE__) . '/includes/nav.php');
 ?>
 
+<?php
+function extract_phase_price($prices, $currency)
+{
+    if (empty($prices)) {
+        return 0;
+    } else {
+        foreach ($prices as $p) {
+            if ($p->currency == $currency) {
+                return $p->value;
+            }
+        }
+        // Meaning this is not defined for that currency
+        return -1;
+    }
+}
+
+?>
+
 <div class="container">
     <form class="form-horizontal" method="post" action="purchase.php">
         <table class="table table-condensed">
@@ -53,7 +71,7 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
                         if ($j > 0) {
                             $description .= ' then ';
                         }
-                        $description .= $phase->type . ' phase at <strong>' . $phase->prices->$currency . ' ' . $currency . '</strong>';
+                        $description .= $phase->type . ' phase at <strong>' . extract_phase_price($phase->prices, $currency) . ' ' . $currency . '</strong>';
                         $j++;
                     }
 
@@ -69,7 +87,7 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
             </tr>';
                 }
             }
-            echo'
+            echo '
             <tr>
                 <td></td>
                 <td></td>
