@@ -28,9 +28,9 @@
             <div class="nav-collapse">
                 <ul class="nav">
                     <li><a href="account.php">My Account</a></li>
-                    <li><a href="invoices.php">My invoices</a></li>
-                    <li><a href="subscriptions.php">My subscriptions</a></li>
-                    <li><a href="catalog.php">Add instances</a></li>
+                    <li><a href="invoices.php">My Invoices</a></li>
+                    <li><a href="subscriptions.php">My Subscriptions</a></li>
+                    <li><a href="catalog.php">Purchase Spy Car Subscriptions</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
