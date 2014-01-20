@@ -155,6 +155,7 @@ if ($account_created === FALSE) {
                         <option>EUR</option>
                         <option>GBP</option>
                         <option>MXN</option>
+                        <option>BTC</option>
                     </select>
                 </div>
             </div>
