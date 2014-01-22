@@ -90,9 +90,14 @@ if ($account_created === FALSE) {
 
 } elseif ($account_created === TRUE) {
     ?>
-        <div class="alert alert-success">
-            You account has been created! Your account id is <?php echo $account->accountId; ?>
-        </div>
+     <div class="alert alert-success">
+      You account has been created! Your account id is <?php echo $account->accountId; ?>
+      </div>
+    <?php
+    if ($account->currency === 'BTC') {
+        header('Location: /payment_method.php');
+    }
+    ?>
     <?php
 
 } elseif ($account_updated === FALSE) {
