@@ -24,7 +24,7 @@ function ensureLoggedIn() {
     session_start();
 
     if (!isset($_SESSION['accountId'])) {
-        header('Location: /account.php');
+        header('Location: account.php');
     }
 }
 

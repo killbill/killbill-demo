@@ -55,5 +55,5 @@ for ($i = 1; $i <= $_POST['nb_plans']; $i++) {
 }
 
 // Redirect the user to his subscriptions page
-header('Location: /subscriptions.php');
+header('Location: subscriptions.php');
 ?>
