@@ -88,6 +88,10 @@ if ($pm_created === FALSE) {
                            value="">
                     <p class="help-block">The API key you got from your hosted wallet provider</p>
                 </div>
+                <div class="form-actions">
+                    <input type="submit" class="btn btn-primary" value="Create">
+                </div>
+
             </div>
    </fieldset>
      </form>
