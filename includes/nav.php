@@ -27,10 +27,16 @@
 
             <div class="nav-collapse">
                 <ul class="nav">
+<?php
+  if (isset($_SESSION['accountId'])) {
+?>
                     <li><a href="account.php">My Account</a></li>
                     <li><a href="invoices.php">My Invoices</a></li>
                     <li><a href="subscriptions.php">My Subscriptions</a></li>
                     <li><a href="catalog.php">Purchase Spy Car Subscriptions</a></li>
+<?php
+  }
+?>
                 </ul>
             </div>
             <!--/.nav-collapse -->

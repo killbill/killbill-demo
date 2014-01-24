@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $accountData->country = $_POST['country'];
     $accountData->phone = $_POST['phone'];
     $accountData->length = strlen($accountData->name);
-    $accountData->timeZone = $_POST['timeZone'];
+    $accountData->timeZone = 'UTC'; //$_POST['timeZone'];
 
     if (!isset($_SESSION['accountId'])) {
         // Create the account
@@ -154,13 +154,13 @@ if ($account_created === FALSE) {
 
                 <div class="controls">
                     <select id="currency" name="currency">
+                        <option>BTC</option>
                         <option>USD</option>
                         <option>AUD</option>
                         <option>BRL</option>
                         <option>EUR</option>
                         <option>GBP</option>
                         <option>MXN</option>
-                        <option>BTC</option>
                     </select>
                 </div>
             </div>
@@ -212,16 +212,6 @@ if ($account_created === FALSE) {
                            value="<?php echo $account->phone; ?>">
 
                     <p class="help-block">Your primary phone number, e.g. 555-122-3491</p>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="timeZone">Timezone</label>
-
-                <div class="controls">
-                    <input type="text" class="input-xlarge" id="timeZone" name="timeZone"
-                           value="<?php echo $account->timeZone; ?>">
-
-                    <p class="help-block">Your timezone, e.g. UTC</p>
                 </div>
             </div>
             <div class="form-actions">
