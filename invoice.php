@@ -22,6 +22,8 @@ if ($_GET['id'] == null) {
 require_once(dirname(__FILE__) . '/killbill-client-php/lib/killbill.php');
 require_once(dirname(__FILE__) . '/util.php');
 
+include_once(dirname(__FILE__) . '/includes/client.php');
+
 ensureLoggedIn();
 
 include_once(dirname(__FILE__) . '/includes/header.php');
@@ -35,12 +37,12 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
 
     $invoice = new Killbill_Invoice();
     $invoice->invoiceId = $_GET['id'];
-    $invoice = $invoice->get(null);
+    $invoice = $invoice->get(true, $tenantHeaders);
 
     if ($invoice == null) {
         echo 'Invoice does not exist.';
     } else {
-        echo $invoice->getInvoiceAsHTML();
+        echo $invoice->getInvoiceAsHTML($tenantHeaders);
     }
     ?>
     </div>

@@ -18,6 +18,8 @@
 require_once(dirname(__FILE__) . '/killbill-client-php/lib/killbill.php');
 require_once(dirname(__FILE__) . '/util.php');
 
+include_once(dirname(__FILE__) . '/includes/client.php');
+
 ensureLoggedIn();
 
 include_once(dirname(__FILE__) . '/includes/header.php');
@@ -55,9 +57,9 @@ function extract_phase_price($prices, $currency)
             </thead>
             <tbody>
             <?php
-            $account = loadAccount();
+            $account = loadAccount($tenantHeaders);
             $currency = $account->currency;
-            $catalog = loadCatalog();
+            $catalog = loadCatalog($tenantHeaders);
 
             $i = 0;
             foreach ($catalog->getBaseProducts() as $product) {

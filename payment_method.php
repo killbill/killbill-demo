@@ -18,6 +18,8 @@
 require_once(dirname(__FILE__) . '/killbill-client-php/lib/killbill.php');
 require_once(dirname(__FILE__) . '/util.php');
 
+include_once(dirname(__FILE__) . '/includes/client.php');
+
 ensureLoggedIn();
 
 include_once(dirname(__FILE__) . '/includes/header.php');
@@ -27,7 +29,7 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
 <div class="container">
 <?php
 
-$account = loadAccount();
+$account = loadAccount($tenantHeaders);
 
 
 $pm_created = null;
@@ -46,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $paymentMethodData->pluginInfo = new Killbill_PaymentMethodPluginDetailAttributes();
   $paymentMethodData->pluginInfo->properties = array($propApiKey);
 
-  $paymentMethod = $paymentMethodData->create("web-user", "PHP_TEST", "Test for the demo");
+  $paymentMethod = $paymentMethodData->create("web-user", "PHP_TEST", "Test for the demo", $tenantHeaders);
   if ($paymentMethod->paymentMethodId != null) {
       $pm_created = TRUE;
   } else {

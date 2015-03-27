@@ -18,6 +18,8 @@
 require_once(dirname(__FILE__) . '/killbill-client-php/lib/killbill.php');
 require_once(dirname(__FILE__) . '/util.php');
 
+include_once(dirname(__FILE__) . '/includes/client.php');
+
 ensureLoggedIn();
 
 include_once(dirname(__FILE__) . '/includes/header.php');
@@ -26,8 +28,8 @@ include_once(dirname(__FILE__) . '/includes/nav.php');
 
 <div class="container">
 <?php
-$account = loadAccount();
-$bundles = $account->getBundles();
+$account = loadAccount($tenantHeaders);
+$bundles = $account->getBundles($tenantHeaders);
 ?>
 
     <p>You currenty have <?php echo count($bundles); ?> instances</p>

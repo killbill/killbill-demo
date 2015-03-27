@@ -17,6 +17,8 @@
 
 require_once(dirname(__FILE__) . '/killbill-client-php/lib/killbill.php');
 
+include_once(dirname(__FILE__) . '/includes/client.php');
+
 session_start();
 
 $account_created = null;
@@ -40,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Create the account
         // The external key is not used in this example
         $accountData->externalKey = uniqid();
-        $account = $accountData->create("web-user", "PHP_TEST", "Test for the demo");
+        $account = $accountData->create("web-user", "PHP_TEST", "Test for the demo", $tenantHeaders);
 
         if ($account != null && $account->accountId != null) {
             $_SESSION['accountId'] = $account->accountId;
@@ -54,10 +56,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $accountData->accountId = $_SESSION['accountId'];
 
         // TODO API needs to be fixed
-        $currentAccount = $accountData->get();
+        $currentAccount = $accountData->get($tenantHeaders);
         $accountData->externalKey = $currentAccount->externalKey;
 
-        $account = $accountData->update("web-user", "PHP_TEST", "Test for the demo");
+        $account = $accountData->update("web-user", "PHP_TEST", "Test for the demo", $tenantHeaders);
 
         if ($account != null) {
             $account_updated = TRUE;
@@ -71,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_SESSION['accountId'])) {
         $account->accountId = $_SESSION['accountId'];
-        $account = $account->get();
+        $account = $account->get($tenantHeaders);
     }
 }
 

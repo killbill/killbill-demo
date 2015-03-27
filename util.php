@@ -33,10 +33,10 @@ function ensureLoggedIn() {
  *
  * @return account object
  */
-function loadAccount() {
+function loadAccount($tenantHeaders) {
     $account = new Killbill_Account();
     $account->accountId = $_SESSION['accountId'];
-    return $account->get();
+    return $account->get($tenantHeaders);
 }
 
 /**
@@ -44,9 +44,9 @@ function loadAccount() {
  *
  * @return catalog object
  */
-function loadCatalog() {
+function loadCatalog($tenantHeaders) {
     $catalog = new Killbill_Catalog();
-    $catalog->initialize();
+    $catalog->initialize($tenantHeaders);
     return $catalog;
 }
 

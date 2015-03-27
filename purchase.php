@@ -18,6 +18,8 @@
 require_once(dirname(__FILE__) . '/killbill-client-php/lib/killbill.php');
 require_once(dirname(__FILE__) . '/util.php');
 
+include_once(dirname(__FILE__) . '/includes/client.php');
+
 ensureLoggedIn();
 
 date_default_timezone_set('UTC');
@@ -29,7 +31,7 @@ function iso8601($time = false) {
 
 $account = new Killbill_Account();
 $account->accountId = $_SESSION['accountId'];
-$account = $account->get();
+$account = $account->get($tenantHeaders);
 
 for ($i = 1; $i <= $_POST['nb_plans']; $i++) {
     $quantity = intval($_POST['quantity_' . $i]);
@@ -50,7 +52,7 @@ for ($i = 1; $i <= $_POST['nb_plans']; $i++) {
         $subscriptionData->billingPeriod = "MONTHLY";
         $subscriptionData->priceList = "DEFAULT";
 
-        $subscription = $subscriptionData->createAndWait(true, "pierre", "PHP_TEST", "Test for " . $externalBundleId);
+        $subscription = $subscriptionData->createAndWait(true, "pierre", "PHP_TEST", "Test for " . $externalBundleId, $tenantHeaders);
     }
 }
 
